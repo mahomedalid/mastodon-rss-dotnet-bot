@@ -1,0 +1,5 @@
+https://devblogs.microsoft.com/ise/feed/
+https://devblogs.microsoft.com/engineering-at-microsoft/feed/
+https://devblogs.microsoft.com/azure-sdk/feed/
+https://devblogs.microsoft.com/dotnet/category/csharp/feed/
+https://maho.dev/index.xml

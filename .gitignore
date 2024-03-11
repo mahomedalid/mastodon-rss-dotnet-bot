@@ -351,3 +351,5 @@ MigrationBackup/
 .ionide/
 
 myprofile.db
+
+build.sh
