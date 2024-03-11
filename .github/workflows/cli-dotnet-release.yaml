@@ -38,7 +38,7 @@ jobs:
           release_name="rssbot-$tag-${{ matrix.target }}"
 
           # Build everything (--framework netcoreapp3.1)
-          dotnet publish src/RssBot.csproj --runtime "${{ matrix.target }}" -c Release -o "$release_name" -p:PublishSingleFile=false --self-contained true
+          dotnet publish src/RSsBot/RssBot.csproj --runtime "${{ matrix.target }}" -c Release -o "$release_name" -p:PublishSingleFile=false --self-contained true
 
           # Pack files
           if [ "${{ matrix.target }}" == "win-x64" ]; then
