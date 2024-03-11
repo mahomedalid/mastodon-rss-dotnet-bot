@@ -1,6 +1,8 @@
 # DotNet Social Mastodon RSS Bot
 
-## A very simple Command-Line based Mastodon RSS Dotnet Bot
+## A very Simple Command-Line based Mastodon RSS Dotnet Bot
+
+**Sometimes the best things are just the simple things.**
 
 This repository contains a simple RSS bot for Mastodon, implemented in C# using .NET, works in linux/windows/macos. The bot is designed to fetch RSS feeds and post articles to a Mastodon instance.
 
