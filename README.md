@@ -1,6 +1,7 @@
-# DotNet Social Mastodon RSS Bot
+# Mastodon RSS Dotnet Bot
 
-## A very Simple Command-Line based Mastodon RSS Dotnet Bot
+## Setup your own fediverse bot from multiple RSS feeds
+### A very Simple Command-Line based Mastodon RSS Dotnet Bot
 
 **Sometimes the best things are just the simple things.**
 
