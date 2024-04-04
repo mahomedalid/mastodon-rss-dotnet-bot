@@ -124,8 +124,8 @@ static void ConfigureServices(ServiceCollection serviceCollection, string[] args
         .AddSingleton((sp) => 
         {
             string currentDirectory = Directory.GetCurrentDirectory();
-            // TODO: making it an option or configuration from env variable
-            string filePath = Path.Combine(currentDirectory, "rssbot.db");
+            var dbFilePath = Environment.GetEnvironmentVariable("RSSBOT_DB") ?? "rssbot.db";
+            string filePath = Path.Combine(currentDirectory, dbFilePath);
 
             return new Db(filePath);
         });

@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/bin/sh -e
 
 LIST_FILE="list.txt"
 
 while read LINE; do
     URL=$(echo $LINE | awk '{print $1}')
-    RssBot fetch-rss --rssUrl "$URL"
+    ./RssBot fetch-rss --rssUrl "$URL"
 done < $LIST_FILE

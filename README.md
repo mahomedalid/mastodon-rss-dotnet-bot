@@ -14,7 +14,7 @@ All the interface is a very simple command-line, and the database is just a loca
 - Post articles to a Mastodon instance.
 - Configurable options for access token, Mastodon host, RSS URL, and limit on posts to publish.
 
-## Installation
+## Getting Started
 
 ### Pre-compiled binaries
 
@@ -33,6 +33,14 @@ Navigate to the repository directory and build the project:
 cd mastodon-rss-dotnet-bot
 dotnet build
 ```
+
+### Docker
+
+docker run \
+  -e "RSSBOT_FEEDS='https://www.youtube.com/feeds/videos.xml?channel_id=UCVvpATOqqanu2jD5-ttRYLQ'" \
+  -e "RSSBOT_INSTANCEHOST=dotnet.social" \
+  -e "RSSBOT_ACCESSTOKEN=<myaccesstoken>"
+  -d rssbot
 
 ## Usage
 
