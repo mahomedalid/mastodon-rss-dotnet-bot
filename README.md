@@ -37,11 +37,21 @@ dotnet build
 
 ### Docker
 
+Pull the image
+
+```
+docker pull ghcr.io/mahomedalid/fediverse/mastodon-rss-bot:latest
+```
+
+Start the container specifiying the env variables for feeds (comma separated), instance of the bot and access token, ex.
+
+```
 docker run \
   -e "RSSBOT_FEEDS='https://www.youtube.com/feeds/videos.xml?channel_id=UCVvpATOqqanu2jD5-ttRYLQ'" \
   -e "RSSBOT_INSTANCEHOST=dotnet.social" \
   -e "RSSBOT_ACCESSTOKEN=<myaccesstoken>"
   -d rssbot
+```
 
 ## Usage
 
