@@ -5,7 +5,7 @@ on:
 
 jobs:
   call-docker-build:
-    uses: ./.github/workflows/deploy_ghcr.yml
+    uses: ./.github/workflows/deploy_ghcr.yaml
     with:
       name: mastodon-rss-bot
       file: Dockerfile
