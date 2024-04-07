@@ -34,4 +34,4 @@ jobs:
         run: |
           owner=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
           docker build ${{ inputs.context }} -f ${{ inputs.file }} --tag ghcr.io/$owner/fediverse/${{ inputs.name }}:latest
-          docker push ghcr.io/$owner/explore-iot-operations/${{ inputs.name }}:latest
+          docker push ghcr.io/$owner/fediverse/${{ inputs.name }}:latest
