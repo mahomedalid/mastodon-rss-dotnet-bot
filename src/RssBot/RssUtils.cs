@@ -146,12 +146,21 @@ namespace RssBot
             return pubDate;
         }
 
-        public static IList<Post> ParseRss(string input, ILogger? logger = null)
+        public static IList<Post> ParseRss(string url, ILogger? logger = null)
         {
-            logger?.LogInformation($"Reading rss {input}");
+            logger?.LogInformation($"Downloading RSS from {url}");
 
-            // Read RSS XML
-            XDocument rssXml = XDocument.Load(input);
+            // Download RSS XML
+            string rssXmlString;
+            using (HttpClient client = new HttpClient())
+            {
+                rssXmlString = client.GetStringAsync(url).Result;
+            }
+
+            logger?.LogInformation($"Downloaded RSS from {url}");
+
+            // Parse RSS XML
+            XDocument rssXml = XDocument.Parse(rssXmlString);
 
             XNamespace dc = "http://purl.org/dc/elements/1.1/";
             // Extract items from RSS XML
@@ -182,7 +191,7 @@ namespace RssBot
                 var post = new Post()
                 {
                     Uri = item.Link!,
-                    RssUri = input,
+                    RssUri = url,
                     Title = item.Title!,
                     RssTitle = title!,
                     Description = item.Description!,

@@ -47,10 +47,24 @@ Start the container specifiying the env variables for feeds (comma separated), i
 
 ```bash
 docker run \
-  -e "RSSBOT_FEEDS='https://www.youtube.com/feeds/videos.xml?channel_id=UCVvpATOqqanu2jD5-ttRYLQ'" \
+  -e "RSSBOT_FEEDS=https://www.youtube.com/feeds/videos.xml?channel_id=UCVvpATOqqanu2jD5-ttRYLQ;https://devblogs.microsoft.com/dotnet/category/csharp/feed/" \
   -e "RSSBOT_INSTANCEHOST=dotnet.social" \
   -e "RSSBOT_ACCESSTOKEN=<myaccesstoken>"
   -d rssbot
+```
+
+The default image is configured to do one post per hour, and two fetch posts daily. If you want to force the pull:
+
+```bash
+docker exec -it <containerid> bash
+root@containerid:/opt/rssbot# ./fetch_env.sh
+```
+
+If you want to test the post:
+
+```bash
+docker exec -it <containerid> bash
+root@containerid:/opt/rssbot# ./post.sh
 ```
 
 ## Usage
