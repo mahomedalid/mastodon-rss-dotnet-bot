@@ -4,6 +4,8 @@ public class Post
 {
     public string Description { get; set; } = default!;
 
+    public string Content { get; set; } = default!;
+
     public string Uri { get; set; } = default!;
 
     public string RssUri { get; set; } = default!;

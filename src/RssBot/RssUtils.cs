@@ -58,6 +58,27 @@ namespace RssBot
             { "devops", "devops" }
         };
 
+        public static async Task<List<ThreadPost>> GetContentThread(Post post, GenerateThreadService service)
+        {
+            var postBody = System.Text.RegularExpressions.Regex.Replace(post.Content, "<.*?>", string.Empty);
+
+            // Replace \n+ for a single \n
+            postBody = System.Text.RegularExpressions.Regex.Replace(postBody, @"\n+", "\n");
+
+            // Fix &#8217;
+            postBody = postBody.Replace("&#8217;", "'");
+
+            var thread = await service.Generate(postBody);
+
+            thread.Add(new ThreadPost()
+            {
+                Content = $"This is an auto-generated thread. The original article can be found here: {post.Uri}. #Bot #GoodNews #TheBrightSide",
+                Tags = new List<string>()
+            });
+
+            return thread;
+        }
+
         public static string GetContent(Post post)
         {
             //TODO: Dehardcode this and make it a configuration
@@ -171,6 +192,7 @@ namespace RssBot
                     //TODO: Replace the domain if it is different
                     Link = item.Element("link")?.Value,
                     Description = item.Element("description")?.Value,
+                    Content = item.Element("{http://purl.org/rss/1.0/modules/content/}encoded")?.Value,
                     PubDate = item.Element("pubDate")?.Value,
                     Author = item.Element(dc + "creator")?.Value
                 });
@@ -195,6 +217,7 @@ namespace RssBot
                     Title = item.Title!,
                     RssTitle = title!,
                     Description = item.Description!,
+                    Content = item?.Content ?? string.Empty,
                     PublishedAt = item.PubDate!,
                     Author = item.Author!
                 };
